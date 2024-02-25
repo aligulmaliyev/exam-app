@@ -1,18 +1,18 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { Card, CardHeader, CardBody, CardFooter, Box, Button, FormControl, Input, FormLabel, Heading } from '@chakra-ui/react'
 
-import { EXAM_KEY } from '@/constants';
-import { useCoreService } from '@/hooks/useCoreService';
-import { useNotify } from '@/hooks/useNotify';
-import { TExam } from '@/types/exam';
+// import { EXAM_KEY } from '@/constants';
+// import { useCoreService } from '@/hooks/useCoreService';
+// import { useNotify } from '@/hooks/useNotify';
+// import { TExam } from '@/types/exam';
 
 
 const SignIn = () => {
   const [examCode, setExamCode] = useState<string>('');
-  const { postRequest } = useCoreService();
-  const navigate = useNavigate();
-  const { errorToast } = useNotify();
+  // const { postRequest } = useCoreService();
+  // const navigate = useNavigate();
+  // const { errorToast } = useNotify();
 
   const signIn = async () => {
     // navigate('/app/pre-question');
