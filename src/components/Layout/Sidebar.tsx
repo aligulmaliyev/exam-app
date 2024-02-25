@@ -84,7 +84,7 @@ export const Sidebar = () => {
             isOpenSidebar={isOpenSidebar}
             subjects={subjects}
             isExpandedParentSubject={isExpandedParentSubject}
-            toggleSubject={toggleSidebar}
+            toggleSubject={toggleSubject}
             toggleSidebar={toggleSidebar}
           />
         </Box>
