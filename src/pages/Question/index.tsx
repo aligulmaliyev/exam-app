@@ -40,7 +40,10 @@ const Question = () => {
 
   return (
     <Flex
-      w="70%"
+      w={{
+        base:'90%',
+        md:"70%"
+      }}
       h="100%"
       pt="24"
       m="auto"
