@@ -1,10 +1,13 @@
 import { TAnswerOption } from "@/types";
-import React from "react";
+
+import MultiAnswer from "./answer-types/MultiAnswer";
+import SingleAnswer from "./answer-types/SingleAnswer";
+import EssayAnswer from "./answer-types/EssayAnswer";
 
 const componentMap = {
-  MULTI_ANSWER: React.lazy(() => import("./answer-types/MultiAnswer")),
-  SINGLE_ANSWER: React.lazy(() => import("./answer-types/SingleAnswer")),
-  ESSAY_ANSWER: React.lazy(() => import("./answer-types/EssayAnswer")),
+  MULTI_ANSWER: MultiAnswer,
+  SINGLE_ANSWER: SingleAnswer,
+  ESSAY_ANSWER: EssayAnswer,
 };
 
 export const Answers = ({
