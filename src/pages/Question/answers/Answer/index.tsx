@@ -1,5 +1,4 @@
-import { useSelected } from "@/store/useSelected";
-import { Checkbox, FormLabel, Radio, Text } from "@chakra-ui/react";
+import { Box, Checkbox, FormLabel, Radio, Text } from "@chakra-ui/react";
 
 import { AnswerWrapper } from "./AnswerWrapper";
 
@@ -20,19 +19,12 @@ export const Answer = ({
   value,
   name,
 }: TAnswerProps) => {
-  const { multiSelected, singleSelected, setMultiSelected, setSingleSelected } =
-    useSelected();
-
-  const isSelected = multi
-    ? multiSelected?.includes(name)
-    : singleSelected == name;
-  const borderStyle = isSelected ? "1px solid gray" : "";
 
   const renderText = () => (
     <FormLabel htmlFor={name} cursor="pointer">
-      <AnswerWrapper display="flex" border={borderStyle}>
+      <AnswerWrapper display="flex" >
         {multi ? (
-          <Checkbox borderColor='gray' id={name} name={name} value={value} />
+          <Checkbox borderColor="gray" id={name} name={name} value={value} />
         ) : (
           <Radio id={name} name={name} value={value} />
         )}
@@ -42,18 +34,25 @@ export const Answer = ({
   );
 
   const renderImage = () => (
-    <>
-      {multi ? (
-        <Checkbox display="none" name={name} id={name} value={value} />
-      ) : (
-        <Radio display="none" name={name} id={name} value={value} />
-      )}
-      <FormLabel onClick={() => multi? setMultiSelected(name):setSingleSelected(name)} m="0" htmlFor={name}>
-        <AnswerWrapper border={borderStyle}>
-          <img src={image} width="100" height="100" />
-        </AnswerWrapper>
-      </FormLabel>
-    </>
+    <FormLabel
+      m="0"
+      htmlFor={name}
+    >
+      <AnswerWrapper  display='flex' alignItems='center' gap='4'>
+        {multi ? (
+          <Checkbox name={name} id={name} value={value} />
+        ) : (
+          <Radio name={name} id={name} value={value} />
+        )}
+        <Box display='flex'flexDirection='column' gap='4'>
+          <Text>
+            It allows for more flexibility in adapting to changing
+            circumstances.
+          </Text>
+          <img src={image} width="300" height="300" style={{objectFit:'cover'}} />
+        </Box>
+      </AnswerWrapper>
+    </FormLabel>
   );
 
   return (

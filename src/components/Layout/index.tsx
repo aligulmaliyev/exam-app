@@ -15,12 +15,13 @@ export const RootLayout = () => {
         <Box
           display="flex"
           ml={{
-            base:'auto',
-            xl:isOpenSidebar ? "305px" : "0px",
+            base: "auto",
+            xl: isOpenSidebar ? "305px" : "65px",
           }}
           flexDirection="column"
           gap="2"
           w="100%"
+          minH="100vh"
         >
           <Header />
           <Box bg="white" minH="100%">
