@@ -18,7 +18,6 @@ import {
 } from "@chakra-ui/react";
 import { IoIosArrowDown, IoIosArrowForward, IoIosMenu } from "react-icons/io";
 import { RiCheckboxBlankCircleLine } from "react-icons/ri";
-import { FaTimes } from "react-icons/fa";
 
 import { useSidebar } from "@/store/useSidebar";
 import { useSubjects } from "@/store/useSubjects";
@@ -112,14 +111,9 @@ const SidebarContent = ({
         <IoIosMenu fontSize="35px" cursor="pointer" onClick={toggleSidebar} />
       </Show>
       {isOpenSidebar && (
-        <>
-          <Heading cursor="pointer" as="h5" size="sm" mr="6" my="1">
-            How to Budget and Forecast for Your Business
-          </Heading>
-          <Hide above="xl">
-            <FaTimes onClick={toggleSidebar} />
-          </Hide>
-        </>
+        <Heading cursor="pointer" as="h5" size="sm" mr="6" my="1">
+          How to Budget and Forecast for Your Business
+        </Heading>
       )}
     </Box>
     {isOpenSidebar && (

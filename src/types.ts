@@ -1,7 +1,7 @@
 export type TAnswerOption = {
   type: "multi-select" | "single-select" | "essay";
   answerLineType: "text" | "image";
-  answers:
+  answers?:
     | {
         id: number;
         answer: string;
@@ -14,4 +14,3 @@ export type TQuestions = {
   questionText: string;
   answerOptions: TAnswerOption;
 };
-

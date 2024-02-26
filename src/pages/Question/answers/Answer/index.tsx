@@ -26,7 +26,7 @@ export const Answer = ({
         {multi ? (
           <Checkbox borderColor="gray" id={name} name={name} value={value} />
         ) : (
-          <Radio id={name} name={name} value={value} />
+          <Radio borderColor="gray" id={name} name={name} value={value} />
         )}
         <Text>{text}</Text>
       </AnswerWrapper>
@@ -40,15 +40,11 @@ export const Answer = ({
     >
       <AnswerWrapper  display='flex' alignItems='center' gap='4'>
         {multi ? (
-          <Checkbox name={name} id={name} value={value} />
+          <Checkbox borderColor="gray" name={name} id={name} value={value} />
         ) : (
-          <Radio name={name} id={name} value={value} />
+          <Radio borderColor="gray" name={name} id={name} value={value} />
         )}
         <Box display='flex'flexDirection='column' gap='4'>
-          <Text>
-            It allows for more flexibility in adapting to changing
-            circumstances.
-          </Text>
           <img src={image} width="300" height="300" style={{objectFit:'cover'}} />
         </Box>
       </AnswerWrapper>
