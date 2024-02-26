@@ -30,13 +30,7 @@ const MultiAnswer = ({
       <Flex
         gap="3"
         mt="6"
-        flexDirection={
-          answerOption?.answerLineType == "image" ? "row" : "column"
-        }
-        wrap={answerOption?.answerLineType == "image" ? "wrap" : "nowrap"}
-        justifyContent={
-          answerOption?.answerLineType == "image" ? "space-between" : ""
-        }
+        flexDirection="column"
       >
         {shuffle?.map((item) => (
           <Answer

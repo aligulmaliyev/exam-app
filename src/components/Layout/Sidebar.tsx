@@ -25,7 +25,12 @@ import { useSubjects } from "@/store/useSubjects";
 
 export const Sidebar = () => {
   const { isOpenSidebar, toggleSidebar, setSidebar } = useSidebar();
-  const { subjects, isExpandedParentSubject, toggleSubject } = useSubjects();
+  const {
+    subjects,
+    selectedSubjectId,
+    isExpandedParentSubject,
+    toggleSubject,
+  } = useSubjects();
 
   useEffect(() => {
     if (window.innerWidth <= 1280) setSidebar(false);
@@ -59,6 +64,7 @@ export const Sidebar = () => {
                 isExpandedParentSubject={isExpandedParentSubject}
                 toggleSubject={toggleSubject}
                 toggleSidebar={toggleSidebar}
+                selectedSubjectId={selectedSubjectId}
               />
             </Box>
           </DrawerContent>
@@ -67,6 +73,7 @@ export const Sidebar = () => {
 
       <Show above="xl">
         <Box
+          position="fixed"
           bg="white"
           flexDirection="column"
           p="4"
@@ -75,10 +82,7 @@ export const Sidebar = () => {
           display={isOpenSidebar ? "flex" : "none"}
           borderRightWidth="1px"
           borderColor="black.400"
-          height={{
-            base:'auto',
-            xl:'100vh'
-          }}
+          height='100%'
         >
           <SidebarContent
             isOpenSidebar={isOpenSidebar}
@@ -86,6 +90,7 @@ export const Sidebar = () => {
             isExpandedParentSubject={isExpandedParentSubject}
             toggleSubject={toggleSubject}
             toggleSidebar={toggleSidebar}
+            selectedSubjectId={selectedSubjectId}
           />
         </Box>
       </Show>
@@ -99,6 +104,7 @@ const SidebarContent = ({
   subjects,
   isExpandedParentSubject,
   toggleSubject,
+  selectedSubjectId,
 }: any) =>
   isOpenSidebar && (
     <>
@@ -159,7 +165,9 @@ const SidebarContent = ({
                 )}
                 <Text
                   w="100%"
-                  fontWeight="600"
+                  fontWeight={
+                    selectedSubjectId == subject.id ? "600" : "normal"
+                  }
                   textOverflow="ellipsis"
                   overflow="hidden"
                   whiteSpace="nowrap"
@@ -178,7 +186,7 @@ const SidebarContent = ({
                   display={
                     isExpandedParentSubject(subject.id) ? "block" : "none"
                   }
-                  ml="8"
+                  ml="6"
                   spacing={3}
                 >
                   {subject.children!?.map((subject: any) => (
@@ -191,7 +199,7 @@ const SidebarContent = ({
                           overflow="hidden"
                           whiteSpace="nowrap"
                         >
-                          - {subject.name}
+                          {subject.name}
                         </Text>
                       </ListItem>
                     </Fragment>

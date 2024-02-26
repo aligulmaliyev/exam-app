@@ -16,7 +16,7 @@ const Question = () => {
       ? "Single Response"
       : answerOptions.type == "multi-select"
       ? "Multiple response"
-      : "Essay";
+      : "Open ended";
 
   const answerType =
     answerOptions.type == "single-select"
@@ -41,17 +41,14 @@ const Question = () => {
   return (
     <Flex
       w={{
-        base:'90%',
-        md:"70%"
+        base: "90%",
+        md: "70%",
       }}
-      h="100%"
       pt="24"
       m="auto"
       flexDirection="column"
-      justifyContent="space-between"
     >
       <Box>
-        {
           <>
             <Text
               border="1px solid"
@@ -72,13 +69,10 @@ const Question = () => {
               answerOptions={answerOptions}
             />
           </>
-        }
       </Box>
-      <Flex justifyContent="flex-end" my="8">
-        <Button onClick={nextQuestion} colorScheme="green" alignSelf="end">
-          Next
-        </Button>
-      </Flex>
+      <Button mt='10' onClick={nextQuestion} colorScheme="green" alignSelf="end">
+        Submit
+      </Button>
     </Flex>
   );
 };

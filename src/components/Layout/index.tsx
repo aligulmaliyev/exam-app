@@ -4,18 +4,26 @@ import { Outlet } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 import ProtectedRoute from "@/routes/ProtectedRoute";
+import { useSidebar } from "@/store/useSidebar";
 
 export const RootLayout = () => {
+  const { isOpenSidebar } = useSidebar();
   return (
     <ProtectedRoute>
       <Box display="flex" gap="2" h="min-content">
         <Sidebar />
-        <Box display="flex" flexDirection="column" gap="2" w="100%">
+        <Box
+          display="flex"
+          ml={{
+            base:'auto',
+            xl:isOpenSidebar ? "305px" : "0px",
+          }}
+          flexDirection="column"
+          gap="2"
+          w="100%"
+        >
           <Header />
-          <Box
-            bg="white"
-            style={{ minHeight: "calc(100vh - 64px)" }}
-          >
+          <Box bg="white" minH="100%">
             <Outlet />
           </Box>
         </Box>
