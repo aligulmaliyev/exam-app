@@ -22,9 +22,10 @@ export const RootLayout = () => {
           gap="2"
           w="100%"
           minH="100vh"
+          
         >
           <Header />
-          <Box bg="white" minH="100%">
+          <Box bg="white" minH="92%">
             <Outlet />
           </Box>
         </Box>

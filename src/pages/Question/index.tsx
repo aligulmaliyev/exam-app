@@ -6,12 +6,14 @@ import { getAnswerValue } from "@/utils/getAnswerValue";
 import { useQuestion } from "@/store/useQuestion";
 import { Answers } from "@/components/Answers";
 import { questionTypeMap } from "@/constants/questionTypeMap";
+import { useNavigate } from "react-router-dom";
 
 const Question = () => {
+  const navigate = useNavigate();
   const { essay, multi, single, reset } = useAnswer();
   const { current, setCurrent } = useQuestion();
   const { questionText, answerOptions, id } = questions[current];
-  
+
   const questionResponse = questionTypeMap[answerOptions.type]?.response;
   const answerType = questionTypeMap[answerOptions.type]?.answerType;
 
@@ -21,7 +23,7 @@ const Question = () => {
     if (questions.length > current + 1) {
       setCurrent(current + 1);
     } else {
-      setCurrent(0);
+      navigate("/app/result");
     }
     reset();
   };
@@ -61,7 +63,7 @@ const Question = () => {
           />
         </>
       </Box>
-      <Button mt="10" onClick={nextQuestion} colorScheme="blue" alignSelf="end">
+      <Button my='10' onClick={nextQuestion} colorScheme="blue" alignSelf="end">
         Submit
       </Button>
     </Flex>
