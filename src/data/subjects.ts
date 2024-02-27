@@ -20,7 +20,21 @@ export const subjects: TSubject[] = [
       },
       {
         id: 4,
-        name: "Agricultural products",
+        name: "Agricultural products ",
+        children: [
+          {
+            id: 1,
+            name: "Location",
+          },
+          {
+            id: 2,
+            name: "Major cities",
+          },
+          {
+            id: 3,
+            name: "Terrain",
+          },
+        ],
       },
     ],
   },

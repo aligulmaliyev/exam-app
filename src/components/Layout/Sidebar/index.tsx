@@ -1,12 +1,18 @@
 import { useEffect } from "react";
-import { Box, Show } from "@chakra-ui/react";
+import {
+  Box,
+  Drawer,
+  DrawerContent,
+  DrawerOverlay,
+  Hide,
+  Show,
+} from "@chakra-ui/react";
 
 import { useSidebar } from "@/store/useSidebar";
-import { MobileSidebar } from "./MobileSidebar";
 import { SidebarContent } from "./SidebarContent";
 
 export const Sidebar = () => {
-  const { isOpenSidebar, setSidebar } = useSidebar();
+  const { isOpenSidebar, toggleSidebar, setSidebar } = useSidebar();
 
   useEffect(() => {
     if (window.innerWidth <= 1280) setSidebar(false);
@@ -24,9 +30,27 @@ export const Sidebar = () => {
 
   return (
     <>
-      <MobileSidebar>
-        <SidebarContent />
-      </MobileSidebar>
+      <Hide above="xl">
+        <Drawer
+          placement={"left"}
+          onClose={toggleSidebar}
+          isOpen={isOpenSidebar}
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <Box
+              flexDirection="column"
+              display={isOpenSidebar ? "flex" : "none"}
+              alignItems={isOpenSidebar ? "normal" : "center"}
+              p="4"
+              gap="3"
+              bg="white"
+            >
+              <SidebarContent />
+            </Box>
+          </DrawerContent>
+        </Drawer>
+      </Hide>
 
       <Show above="xl">
         <Box

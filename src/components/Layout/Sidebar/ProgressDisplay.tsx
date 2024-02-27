@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Progress, Text } from "@chakra-ui/react";
+import { Box, Flex, Progress, Text } from "@chakra-ui/react";
 
 type TProgressDisplayProps = {
   completed: number | string;
@@ -20,7 +20,6 @@ export const ProgressDisplay = ({
         </Flex>
         <Progress colorScheme="green" size="sm" value={progress} />
       </Box>
-      <Divider />
     </>
   );
 };

@@ -12,25 +12,12 @@ type TSubjectsStore = {
   subjects: TSubject[];
   selectedSubjectId: number | null;
   setSubjects: (subjects: TSubject[]) => void;
-  toggleSubject: (id: number) => void;
+  selectSubject: (id: number) => void;
 };
 
-export const useSubjects = create<TSubjectsStore>((set, get) => ({
+export const useSubjects = create<TSubjectsStore>((set) => ({
   subjects: subjects,
   selectedSubjectId: null,
-  expandedSubjects: null,
   setSubjects: (subjects: TSubject[]) => set({ subjects }),
-  toggleSubject: (id: number) => {
-    const currentSelected = get().selectedSubjectId;
-    let newSelectedId: number | null = null;
-
-    if (id !== currentSelected) newSelectedId = id;
-    
-    set((store) => {
-      return {
-        ...store,
-        selectedSubjectId: newSelectedId,
-      };
-    });
-  },
+  selectSubject: (id: number) => set({ selectedSubjectId: id }),
 }));
