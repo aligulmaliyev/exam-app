@@ -1,7 +1,7 @@
 import { useAnswer } from "@/store/useAnswer";
 import { Flex, Textarea } from "@chakra-ui/react";
 
-const EssayAnswer = () => {
+const OpenEndedAnswer = () => {
   const { setEssayValue } = useAnswer();
   return (
     <Flex flexDirection="column" gap="3" mt="6" overflow="auto">
@@ -15,4 +15,5 @@ const EssayAnswer = () => {
     </Flex>
   );
 };
-export default EssayAnswer;
+
+export default OpenEndedAnswer;

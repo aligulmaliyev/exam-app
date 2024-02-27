@@ -1,30 +1,19 @@
 import { Box, Button, Divider, Flex, Text } from "@chakra-ui/react";
 
-import { Answers } from "@/pages/Question/answers";
 import { questions } from "@/data/questions";
 import { useAnswer } from "@/store/useAnswer";
 import { getAnswerValue } from "@/utils/getAnswerValue";
 import { useQuestion } from "@/store/useQuestion";
+import { Answers } from "@/components/Answers";
+import { questionTypeMap } from "@/constants/questionTypeMap";
 
 const Question = () => {
   const { essay, multi, single, reset } = useAnswer();
   const { current, setCurrent } = useQuestion();
-  // const [qIndex, setQIndex] = useState(0);
   const { questionText, answerOptions, id } = questions[current];
-
-  const questionResponse =
-    answerOptions.type == "single-select"
-      ? "Single Response"
-      : answerOptions.type == "multi-select"
-      ? "Multiple response"
-      : "Open ended";
-
-  const answerType =
-    answerOptions.type == "single-select"
-      ? "SINGLE_ANSWER"
-      : answerOptions.type == "multi-select"
-      ? "MULTI_ANSWER"
-      : "ESSAY_ANSWER";
+  
+  const questionResponse = questionTypeMap[answerOptions.type]?.response;
+  const answerType = questionTypeMap[answerOptions.type]?.answerType;
 
   const nextQuestion = () => {
     let value = getAnswerValue({ essay, multi, single });
@@ -60,21 +49,19 @@ const Question = () => {
           >
             {questionResponse}
           </Text>
-          <Box fontSize='23' dangerouslySetInnerHTML={{ __html: questionText }} />
+          <Box
+            fontSize="23"
+            dangerouslySetInnerHTML={{ __html: questionText }}
+          />
           <Divider />
           <Answers
             parentId={id}
-            type={answerType}
+            type={answerType as any}
             answerOptions={answerOptions}
           />
         </>
       </Box>
-      <Button
-        mt="10"
-        onClick={nextQuestion}
-        colorScheme="blue"
-        alignSelf="end"
-      >
+      <Button mt="10" onClick={nextQuestion} colorScheme="blue" alignSelf="end">
         Submit
       </Button>
     </Flex>

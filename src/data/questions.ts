@@ -55,8 +55,7 @@ export const questions: TQuestions[] = [
         },
         {
           id: 3,
-          answer:
-            "1, 2, 6",
+          answer: "1, 2, 6",
         },
         {
           id: 4,
@@ -71,7 +70,7 @@ export const questions: TQuestions[] = [
   },
   {
     id: 2,
-    questionText:`
+    questionText: `
     <p>Diqqətlə baxın! 2 şəkil arasında fərq var?</p>
     <img src="https://www.ilk.az/uploads/test-thumbs-original/ilk-baxisda-asan-gorunen-9-sekilli-mentiq-suali-41744.jpg" />
     `,
@@ -82,7 +81,6 @@ export const questions: TQuestions[] = [
         {
           id: 1,
           answer: "Bəli, var!",
-
         },
         {
           id: 2,
@@ -93,7 +91,7 @@ export const questions: TQuestions[] = [
   },
   {
     id: 4,
-    questionText:`
+    questionText: `
     <img src='https://avtosfer.az/upload/news/c9bf87.jpg'/>
     `,
     answerOptions: {
@@ -102,19 +100,19 @@ export const questions: TQuestions[] = [
       answers: [
         {
           id: 1,
-          answer: 'https://files.modern.az/articles/2019/12/18/357837.jpg',
+          answer: "https://files.modern.az/articles/2019/12/18/357837.jpg",
         },
         {
           id: 2,
-          answer: 'https://files.modern.az/articles/2019/12/18/357837.jpg',
+          answer: "https://files.modern.az/articles/2019/12/18/357837.jpg",
         },
         {
           id: 3,
-          answer: 'https://files.modern.az/articles/2019/12/18/357837.jpg',
+          answer: "https://files.modern.az/articles/2019/12/18/357837.jpg",
         },
         {
           id: 4,
-          answer: 'https://files.modern.az/articles/2019/12/18/357837.jpg',
+          answer: "https://files.modern.az/articles/2019/12/18/357837.jpg",
         },
       ],
     },
@@ -124,7 +122,7 @@ export const questions: TQuestions[] = [
     questionText: `7200 bit/san sürətlə işləyən modem 3600 baytlıq
     informasiyanı neçə saniyəyə ötürə bilər?`,
     answerOptions: {
-      type: "essay",
+      type: "open-ended",
       answerLineType: "text",
     },
   },

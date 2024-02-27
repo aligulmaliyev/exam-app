@@ -1,18 +1,12 @@
-import { TAnswerOption } from "@/types";
+import { useMemo } from "react";
 import { Flex, RadioGroup } from "@chakra-ui/react";
 
-import { Answer } from "../Answer";
+import { Option } from "../Option";
 import { useAnswer } from "@/store/useAnswer";
-import { useMemo } from "react";
 import { shuffleArray } from "@/utils/shuffleArray";
+import { TAnswersProps } from "@/types";
 
-const SingleAnswer = ({
-  parentId,
-  answerOption,
-}: {
-  parentId: number;
-  answerOption: TAnswerOption;
-}) => {
+const SingleAnswer = ({ parentId, answerOption }: TAnswersProps) => {
   const { setSingleValue } = useAnswer();
 
   const shuffle = useMemo(
@@ -27,13 +21,9 @@ const SingleAnswer = ({
 
   return (
     <RadioGroup key={parentId} onChange={(value) => handleSetValue(value)}>
-      <Flex
-        gap="3"
-        mt="6"
-        flexDirection="column"
-      >
+      <Flex gap="3" mt="6" flexDirection="column">
         {shuffle?.map((item) => (
-          <Answer
+          <Option
             name={`question-${parentId}-answer-${item.id}`}
             value={`${parentId}-${item.id}`}
             key={item?.id}

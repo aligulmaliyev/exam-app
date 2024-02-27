@@ -1,13 +1,12 @@
 import { TAnswerOption } from "@/types";
-
-import MultiAnswer from "./answer-types/MultiAnswer";
-import SingleAnswer from "./answer-types/SingleAnswer";
-import EssayAnswer from "./answer-types/EssayAnswer";
+import SingleAnswer from "./AnswerTypes/SingleAnswer";
+import OpenEndedAnswer from "./AnswerTypes/OpenEndedAnswer";
+import { MultipleAnswer } from "./AnswerTypes/MultipleAnswer";
 
 const componentMap = {
-  MULTI_ANSWER: MultiAnswer,
+  MULTI_ANSWER: MultipleAnswer,
   SINGLE_ANSWER: SingleAnswer,
-  ESSAY_ANSWER: EssayAnswer,
+  ESSAY_ANSWER: OpenEndedAnswer,
 };
 
 export const Answers = ({
