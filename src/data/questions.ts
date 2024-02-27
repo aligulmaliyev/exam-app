@@ -63,7 +63,7 @@ export const questions: TQuestions[] = [
           answer: "2, 3, 5",
         },
         {
-          id: 4,
+          id: 5,
           answer: "1, 2, 5",
         },
       ],
