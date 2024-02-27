@@ -8,16 +8,19 @@ export type TSubject = {
   children?: TSubject[];
 };
 
+export type TSelectedSubject = { id: number; name: string };
+
 type TSubjectsStore = {
   subjects: TSubject[];
-  selectedSubjectId: number | null;
+  selectedSubject: TSelectedSubject;
   setSubjects: (subjects: TSubject[]) => void;
-  selectSubject: (id: number) => void;
+  selectSubject: ({ id, name }: TSelectedSubject) => void;
 };
 
 export const useSubjects = create<TSubjectsStore>((set) => ({
   subjects: subjects,
-  selectedSubjectId: null,
+  selectedSubject: {} as TSelectedSubject,
   setSubjects: (subjects: TSubject[]) => set({ subjects }),
-  selectSubject: (id: number) => set({ selectedSubjectId: id }),
+  selectSubject: ({ id, name }: TSelectedSubject) =>
+    set({ selectedSubject: { id, name } }),
 }));

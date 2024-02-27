@@ -1,4 +1,4 @@
-import { TSubject } from "@/store/useSubjects";
+import { TSelectedSubject, TSubject } from "@/store/useSubjects";
 import {
   AccordionButton,
   AccordionIcon,
@@ -14,10 +14,11 @@ export const SidebarListItem = ({
   selectSubject,
 }: {
   subject: TSubject;
-  selectSubject: (id: number) => void;
+  selectSubject: ({ id, name }: TSelectedSubject) => void;
 }) => {
+    
   const handleClick = () => {
-    selectSubject(subject.id);
+    selectSubject({id:subject.id,name:subject.name});
   };
 
   return (

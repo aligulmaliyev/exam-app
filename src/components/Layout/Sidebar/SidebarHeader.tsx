@@ -1,13 +1,12 @@
 import { useSidebar } from "@/store/useSidebar";
+import { useSubjects } from "@/store/useSubjects";
 import { Box, Heading, Show } from "@chakra-ui/react";
 import { IoIosMenu } from "react-icons/io";
 
-type TSidebarHeaderProps = {
-  headingText: string;
-};
 
-export const SidebarHeader = ({ headingText }: TSidebarHeaderProps) => {
+export const SidebarHeader = () => {
   const { isOpenSidebar, toggleSidebar } = useSidebar();
+  const { selectedSubject:{name} } = useSubjects()
   return (
     <Box display="flex" flexDirection="column">
       <Show above="xl">
@@ -15,7 +14,7 @@ export const SidebarHeader = ({ headingText }: TSidebarHeaderProps) => {
       </Show>
       {isOpenSidebar && (
         <Heading cursor="pointer" as="h5" size="sm" mr="6" my="1">
-          {headingText}
+          {name}
         </Heading>
       )}
     </Box>

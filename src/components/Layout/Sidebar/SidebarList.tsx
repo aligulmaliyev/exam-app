@@ -1,4 +1,4 @@
-import { TSubject } from "@/store/useSubjects";
+import { TSelectedSubject, TSubject } from "@/store/useSubjects";
 import { Accordion } from "@chakra-ui/react";
 import { SidebarListItem } from "./SidebarListItem";
 
@@ -7,7 +7,7 @@ export const SidebarList = ({
   selectSubject,
 }: {
   subjects: TSubject[];
-  selectSubject: (id: number) => void;
+  selectSubject: ({ id, name }: TSelectedSubject) => void;
 }) => {
   return (
     <Accordion allowToggle>

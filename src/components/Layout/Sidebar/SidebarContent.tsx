@@ -10,7 +10,7 @@ export const SidebarContent = () => {
   const { subjects, selectSubject } = useSubjects()
   return (
     <>
-      <SidebarHeader headingText="How to Budget and Forecast for Your Business" />
+      <SidebarHeader />
       {isOpenSidebar && (
         <>
           <UserInfo image="https://bit.ly/sage-adebayo" name="Ali Gulmaliyev" />
