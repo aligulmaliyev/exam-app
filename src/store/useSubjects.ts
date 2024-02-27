@@ -11,35 +11,26 @@ export type TSubject = {
 type TSubjectsStore = {
   subjects: TSubject[];
   selectedSubjectId: number | null;
-  expandedSubjects: number[];
   setSubjects: (subjects: TSubject[]) => void;
   toggleSubject: (id: number) => void;
-  isExpandedParentSubject: (id: number) => boolean;
 };
 
 export const useSubjects = create<TSubjectsStore>((set, get) => ({
   subjects: subjects,
   selectedSubjectId: null,
-  expandedSubjects: [],
+  expandedSubjects: null,
   setSubjects: (subjects: TSubject[]) => set({ subjects }),
   toggleSubject: (id: number) => {
+    const currentSelected = get().selectedSubjectId;
+    let newSelectedId: number | null = null;
+
+    if (id !== currentSelected) newSelectedId = id;
+    
     set((store) => {
-      const { expandedSubjects } = store;
-      let newExpandedSubjects: number[] = [];
-      if (expandedSubjects.includes(id)) {
-        newExpandedSubjects = expandedSubjects.filter((item) => item != id);
-      } else {
-        newExpandedSubjects = [...expandedSubjects, id];
-      }
       return {
         ...store,
-        selectedSubjectId: id,
-        expandedSubjects: newExpandedSubjects,
+        selectedSubjectId: newSelectedId,
       };
     });
-  },
-  isExpandedParentSubject: (id: number) => {
-    const { expandedSubjects } = get();
-    return expandedSubjects.includes(id);
   },
 }));
