@@ -22,7 +22,7 @@ export const APPRouter = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <Navigate to="question" replace />,
+                        element: <Navigate to="pre-question" replace />,
                     },
                     {
                         path: "pre-question",
